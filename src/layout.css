@@ -1,3 +1,5 @@
+@import 'node_modules/kenga-labels/layout.css';
+
 .p-dropdown-chevron {
     position: absolute;
     display: inline-block;

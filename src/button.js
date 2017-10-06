@@ -1,34 +1,32 @@
-define([
-    'ui/utils',
-    'core/extend',
-    'labels/image-paragraph'], function (
-        Ui,
-        extend,
-        ImageParagraph) {
-    function Button(text, icon, iconTextGap, onActionPerformed) {
+import Ui from 'kenga/utils';
+import ImageParagraph from 'kenga-labels/image-paragraph';
+
+class Button extends ImageParagraph {
+    constructor(text, icon, iconTextGap, onActionPerformed) {
         if (arguments.length < 3)
             iconTextGap = 4;
         if (arguments.length < 2)
             icon = null;
         if (arguments.length < 1)
             text = '';
-        ImageParagraph.call(this, document.createElement('button'), text, icon, iconTextGap);
-        var self = this;
+        super(document.createElement('button'), text, icon, iconTextGap);
+        const self = this;
         this.opaque = true;
 
-        var actionHandlers = 0;
-        var clickReg = null;
-        var superAddActionHandler = this.addActionHandler;
+        let actionHandlers = 0;
+        let clickReg = null;
+        const superAddActionHandler = this.addActionHandler;
+
         function addActionHandler(handler) {
             if (actionHandlers === 0) {
-                clickReg = Ui.on(this.element, Ui.Events.CLICK, function () {
+                clickReg = Ui.on(self.element, Ui.Events.CLICK, () => {
                     self.fireActionPerformed();
                 });
             }
             actionHandlers++;
-            var reg = superAddActionHandler(handler);
+            let reg = superAddActionHandler(handler);
             return {
-                removeHandler: function () {
+                removeHandler: function() {
                     if (reg) {
                         reg.removeHandler();
                         reg = null;
@@ -42,12 +40,12 @@ define([
             };
         }
         Object.defineProperty(this, 'addActionHandler', {
-            get: function () {
+            get: function() {
                 return addActionHandler;
             }
         });
         this.onActionPerformed = onActionPerformed;
     }
-    extend(Button, ImageParagraph);
-    return Button;
-});
+}
+
+export default Button;

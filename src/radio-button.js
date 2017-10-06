@@ -1,30 +1,24 @@
-define([
-    'ui/utils',
-    'core/extend',
-    'core/invoke',
-    'ui/widget',
-    'ui/events/value-change-event'], function (
-        Ui,
-        extend,
-        Invoke,
-        Widget,
-        ValueChangeEvent) {
-    function RadioButton(text, selected, onActionPerformed) {
+import Ui from 'kenga/utils';
+import Widget from 'kenga/widget';
+import ValueChangeEvent from 'kenga/events/value-change-event';
+import Invoke from 'septima-utils/invoke';
+
+class RadioButton extends Widget {
+    constructor(text, selected, onActionPerformed) {
         if (arguments.length < 2)
             selected = false;
         if (arguments.length < 1)
             text = '';
-
-        Widget.call(this, document.createElement('label'));
-        var label = this.element;
-        var box = document.createElement('input');
+        super(document.createElement('label'));
+        const label = this.element;
+        const box = document.createElement('input');
         box.type = 'radio';
         this.opaque = false;
         this.onActionPerformed = onActionPerformed;
 
-        var horizontalTextPosition = Ui.HorizontalPosition.RIGHT;
+        let horizontalTextPosition = Ui.HorizontalPosition.RIGHT;
 
-        var self = this;
+        const self = this;
 
         function applyText() {
             label.innerText = text;
@@ -42,24 +36,23 @@ define([
 
         function applyPosition() {
             label.style.direction =
-                    horizontalTextPosition === Ui.HorizontalPosition.RIGHT
-                    || horizontalTextPosition === Ui.HorizontalPosition.CENTER ?
-                    'rtl' : 'ltr';
+                horizontalTextPosition === Ui.HorizontalPosition.RIGHT || horizontalTextPosition === Ui.HorizontalPosition.CENTER ?
+                'rtl' : 'ltr';
         }
 
         aplySelected();
         applyText();
         applyPosition();
 
-        var clickReg = Ui.on(box, Ui.Events.CLICK, function (evt) {
+        const clickReg = Ui.on(box, Ui.Events.CLICK, evt => {
             self.fireActionPerformed();
         });
-                
+
         Object.defineProperty(this, 'text', {
-            get: function () {
+            get: function() {
                 return text;
             },
-            set: function (aValue) {
+            set: function(aValue) {
                 if (text !== aValue) {
                     text = aValue;
                     applyText();
@@ -71,10 +64,10 @@ define([
          * Horizontal position of the text relative to the icon.
          */
         Object.defineProperty(this, "horizontalTextPosition", {
-            get: function () {
+            get: function() {
                 return horizontalTextPosition;
             },
-            set: function (aValue) {
+            set: function(aValue) {
                 if (horizontalTextPosition !== aValue) {
                     horizontalTextPosition = aValue;
                     applyPosition();
@@ -83,12 +76,12 @@ define([
         });
 
         Object.defineProperty(this, 'selected', {
-            get: function () {
+            get: function() {
                 return selected;
             },
-            set: function (aValue) {
+            set: function(aValue) {
                 if (selected !== aValue) {
-                    var oldValue = selected;
+                    const oldValue = selected;
                     selected = aValue;
                     aplySelected();
                     fireValueChanged(oldValue);
@@ -97,19 +90,20 @@ define([
         });
 
         Object.defineProperty(this, 'value', {
-            get: function () {
+            get: function() {
                 return self.selected;
             },
-            set: function (aValue) {
+            set: function(aValue) {
                 self.selected = aValue;
             }
         });
 
-        var valueChangeHandlers = new Set();
+        const valueChangeHandlers = new Set();
+
         function addValueChangeHandler(handler) {
             valueChangeHandlers.add(handler);
             return {
-                removeHandler: function () {
+                removeHandler: function() {
                     valueChangeHandlers.delete(handler);
                 }
 
@@ -117,21 +111,21 @@ define([
         }
 
         Object.defineProperty(this, 'addValueChangeHandler', {
-            get: function () {
+            get: function() {
                 return addValueChangeHandler;
             }
         });
 
         function fireValueChanged(oldValue) {
-            var event = new ValueChangeEvent(self, oldValue, selected);
-            valueChangeHandlers.forEach(function (h) {
-                Invoke.later(function () {
+            const event = new ValueChangeEvent(self, oldValue, selected);
+            valueChangeHandlers.forEach(h => {
+                Invoke.later(() => {
                     h(event);
                 });
             });
         }
 
-        this.addActionHandler(function () {
+        this.addActionHandler(() => {
             if (box.indeterminate) {
                 self.value = null;
             } else {
@@ -139,14 +133,14 @@ define([
             }
         });
 
-        var buttonGroup = null;
+        let buttonGroup = null;
 
         Object.defineProperty(this, 'buttonGroup', {
-            get: function () {
+            get: function() {
                 return buttonGroup;
             },
-            set: function (aValue) {
-                var oldGroup = buttonGroup;
+            set: function(aValue) {
+                const oldGroup = buttonGroup;
                 buttonGroup = aValue;
                 if (oldGroup)
                     oldGroup.remove(self);
@@ -155,7 +149,7 @@ define([
             }
         });
     }
-    extend(RadioButton, Widget);
-    return RadioButton;
-});
+}
+
+export default RadioButton;
        
