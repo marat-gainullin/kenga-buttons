@@ -41,7 +41,7 @@ describe('Buttons Api', () => {
             expect(btn5.text).toEqual('sample');
             expect(btn5.icon).toEqual(icon);
             expect(btn5.iconTextGap).toEqual(6);
-            expect(btn5.onActionPerformed).toBe(action);
+            expect(btn5.onAction).toBe(action);
             done();
         }, e => {
             done.fail(e);
@@ -99,7 +99,7 @@ describe('Buttons Api', () => {
             // center center
             btn.verticalTextPosition = Ui.VerticalPosition.CENTER;
 
-            btn.onActionPerformed = () => {
+            btn.onAction = () => {
                 Logger.info('btn action');
             };
 
@@ -160,7 +160,7 @@ describe('Buttons Api', () => {
             // center center
             btn.verticalTextPosition = Ui.VerticalPosition.CENTER;
 
-            btn.onActionPerformed = () => {
+            btn.onAction = () => {
                 Logger.info('btn action');
             };
 
@@ -208,7 +208,7 @@ describe('Buttons Api', () => {
             expect(btn6.icon).toEqual(icon);
             expect(btn6.selected).toBeTruthy();
             expect(btn6.iconTextGap).toEqual(6);
-            expect(btn6.onActionPerformed).toBe(action);
+            expect(btn6.onAction).toBe(action);
 
             btn1.onValueChange = event => {
                 expect(event.source).toEqual(btn1);
@@ -285,7 +285,7 @@ describe('Buttons Api', () => {
             // center center
             toggle.verticalTextPosition = Ui.VerticalPosition.CENTER;
 
-            toggle.onActionPerformed = () => {
+            toggle.onAction = () => {
                 Logger.info('toggle action');
             };
 
@@ -349,7 +349,7 @@ describe('Buttons Api', () => {
             // center center
             btn.verticalTextPosition = Ui.VerticalPosition.CENTER;
 
-            btn.onActionPerformed = () => {
+            btn.onAction = () => {
                 Logger.info('drop down action');
             };
 
@@ -364,12 +364,12 @@ describe('Buttons Api', () => {
         const check1 = new CheckRadio();
         expect(check1.text).toEqual('');
         expect(check1.selected).toBe(false);
-        expect(check1.onActionPerformed).toBeFalsy();
+        expect(check1.onAction).toBeFalsy();
 
         const check2 = new CheckRadio('Sample check box');
         expect(check2.text).toEqual('Sample check box');
         expect(check2.selected).toBe(false);
-        expect(check2.onActionPerformed).toBeFalsy();
+        expect(check2.onAction).toBeFalsy();
 
         check2.text = 'Sample check box 1';
         expect(check2.text).toEqual('Sample check box 1');
@@ -377,18 +377,18 @@ describe('Buttons Api', () => {
         expect(check2.selected).toBe(true);
         function action() {}
 
-        check2.onActionPerformed = action;
-        expect(check2.onActionPerformed).toBe(action);
+        check2.onAction = action;
+        expect(check2.onAction).toBe(action);
 
         const check3 = new CheckRadio('Sample check box', true);
         expect(check3.text).toEqual('Sample check box');
         expect(check3.selected).toBe(true);
-        expect(check3.onActionPerformed).toBeFalsy();
+        expect(check3.onAction).toBeFalsy();
 
         const check4 = new CheckRadio('Sample check box', true, action);
         expect(check4.text).toEqual('Sample check box');
         expect(check4.selected).toBe(true);
-        expect(check4.onActionPerformed).toBe(action);
+        expect(check4.onAction).toBe(action);
     }
 
     it('Checkbox.Structure', done => {
@@ -400,7 +400,7 @@ describe('Buttons Api', () => {
         const check = new CheckRadio();
         document.body.appendChild(check.element);
         check.text = 'Sample check box';
-        check.onActionPerformed = e => {
+        check.onAction = e => {
             Logger.info('Check action');
         };
         check.onValueChange = e => {

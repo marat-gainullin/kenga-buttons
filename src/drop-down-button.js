@@ -2,14 +2,14 @@ import Ui from 'kenga/utils';
 import Button from './button';
 
 class DropDownButton extends Button {
-    constructor(text, icon, iconTextGap, onActionPerformed) {
+    constructor(text, icon, iconTextGap, onAction) {
         if (arguments.length < 3)
             iconTextGap = 4;
         if (arguments.length < 2)
             icon = null;
         if (arguments.length < 1)
             text = '';
-        super(text, icon, iconTextGap, onActionPerformed);
+        super(text, icon, iconTextGap, onAction);
         const self = this;
 
         const dropDown = document.createElement('div');

@@ -3,7 +3,7 @@ import ValueChangeEvent from 'kenga/events/value-change-event';
 import Button from './button';
 
 class ToggleButton extends Button {
-    constructor(text, icon, selected, iconTextGap, onActionPerformed) {
+    constructor(text, icon, selected, iconTextGap, onAction) {
         if (arguments.length < 4)
             iconTextGap = 4;
         if (arguments.length < 3)
@@ -12,7 +12,7 @@ class ToggleButton extends Button {
             icon = null;
         if (arguments.length < 1)
             text = '';
-        super(text, icon, iconTextGap, onActionPerformed);
+        super(text, icon, iconTextGap, onAction);
         const self = this;
 
         function applySelected() {

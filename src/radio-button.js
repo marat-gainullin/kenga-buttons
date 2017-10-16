@@ -4,7 +4,7 @@ import ValueChangeEvent from 'kenga/events/value-change-event';
 import Invoke from 'septima-utils/invoke';
 
 class RadioButton extends Widget {
-    constructor(text, selected, onActionPerformed) {
+    constructor(text, selected, onAction) {
         if (arguments.length < 2)
             selected = false;
         if (arguments.length < 1)
@@ -14,7 +14,7 @@ class RadioButton extends Widget {
         const box = document.createElement('input');
         box.type = 'radio';
         this.opaque = false;
-        this.onActionPerformed = onActionPerformed;
+        this.onAction = onAction;
 
         let horizontalTextPosition = Ui.HorizontalPosition.RIGHT;
 
@@ -45,7 +45,7 @@ class RadioButton extends Widget {
         applyPosition();
 
         const clickReg = Ui.on(box, Ui.Events.CLICK, evt => {
-            self.fireActionPerformed();
+            self.fireAction();
         });
 
         Object.defineProperty(this, 'text', {

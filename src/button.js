@@ -2,7 +2,7 @@ import Ui from 'kenga/utils';
 import ImageParagraph from 'kenga-labels/image-paragraph';
 
 class Button extends ImageParagraph {
-    constructor(text, icon, iconTextGap, onActionPerformed) {
+    constructor(text, icon, iconTextGap, onAction) {
         if (arguments.length < 3)
             iconTextGap = 4;
         if (arguments.length < 2)
@@ -20,7 +20,7 @@ class Button extends ImageParagraph {
         function addActionHandler(handler) {
             if (actionHandlers === 0) {
                 clickReg = Ui.on(self.element, Ui.Events.CLICK, () => {
-                    self.fireActionPerformed();
+                    self.fireAction();
                 });
             }
             actionHandlers++;
@@ -44,7 +44,7 @@ class Button extends ImageParagraph {
                 return addActionHandler;
             }
         });
-        this.onActionPerformed = onActionPerformed;
+        this.onAction = onAction;
     }
 }
 
