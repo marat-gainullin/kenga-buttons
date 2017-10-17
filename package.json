@@ -1,6 +1,6 @@
 {
   "name": "kenga-buttons",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Kenga buttons. Simple and specific i.e. dropdown button",
   "main": "index.js",
   "repository": "https://github.com/marat-gainullin/kenga-buttons.git",
@@ -42,8 +42,8 @@
     "yargs": "^9.0.1"
   },
   "dependencies": {
-    "kenga": "^0.0.8",
-    "kenga-labels": "^0.0.3",
+    "kenga": "^0.0.9",
+    "kenga-labels": "^0.0.4",
     "septima-utils": "^0.0.4"
   }
 }
