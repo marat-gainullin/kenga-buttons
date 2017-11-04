@@ -1,5 +1,9 @@
 @import 'node_modules/kenga-labels/layout.css';
 
+.p-boolean-widget > input {
+    vertical-align: middle;
+}
+
 .p-dropdown-chevron {
     position: absolute;
     display: inline-block;
