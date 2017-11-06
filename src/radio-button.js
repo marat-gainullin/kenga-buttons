@@ -21,9 +21,13 @@ class RadioButton extends Widget {
 
         const self = this;
 
-        function applyText() {
+        function applyTextAndPosition() {
             label.innerText = text;
-            label.appendChild(box);
+            if (horizontalTextPosition === Ui.HorizontalPosition.RIGHT || horizontalTextPosition === Ui.HorizontalPosition.CENTER) {
+                label.insertBefore(box, label.lastChild);
+            } else {
+                label.appendChild(box);
+            }
         }
 
         function aplySelected() {
@@ -35,28 +39,21 @@ class RadioButton extends Widget {
             }
         }
 
-        function applyPosition() {
-            label.style.direction =
-                horizontalTextPosition === Ui.HorizontalPosition.RIGHT || horizontalTextPosition === Ui.HorizontalPosition.CENTER ?
-                'rtl' : 'ltr';
-        }
-
         aplySelected();
-        applyText();
-        applyPosition();
+        applyTextAndPosition();
 
         const clickReg = Ui.on(box, Ui.Events.CLICK, evt => {
             self.fireAction();
         });
 
         Object.defineProperty(this, 'text', {
-            get: function() {
+            get: function () {
                 return text;
             },
-            set: function(aValue) {
+            set: function (aValue) {
                 if (text !== aValue) {
                     text = aValue;
-                    applyText();
+                    applyTextAndPosition();
                 }
             }
         });
@@ -64,23 +61,23 @@ class RadioButton extends Widget {
         /**
          * Horizontal position of the text relative to the icon.
          */
-        Object.defineProperty(this, "horizontalTextPosition", {
-            get: function() {
+        Object.defineProperty(this, 'horizontalTextPosition', {
+            get: function () {
                 return horizontalTextPosition;
             },
-            set: function(aValue) {
+            set: function (aValue) {
                 if (horizontalTextPosition !== aValue) {
                     horizontalTextPosition = aValue;
-                    applyPosition();
+                    applyTextAndPosition();
                 }
             }
         });
 
         Object.defineProperty(this, 'selected', {
-            get: function() {
+            get: function () {
                 return selected;
             },
-            set: function(aValue) {
+            set: function (aValue) {
                 if (selected !== aValue) {
                     const oldValue = selected;
                     selected = aValue;
@@ -91,10 +88,10 @@ class RadioButton extends Widget {
         });
 
         Object.defineProperty(this, 'value', {
-            get: function() {
+            get: function () {
                 return self.selected;
             },
-            set: function(aValue) {
+            set: function (aValue) {
                 self.selected = aValue;
             }
         });
@@ -104,7 +101,7 @@ class RadioButton extends Widget {
         function addValueChangeHandler(handler) {
             valueChangeHandlers.add(handler);
             return {
-                removeHandler: function() {
+                removeHandler: function () {
                     valueChangeHandlers.delete(handler);
                 }
 
@@ -112,7 +109,7 @@ class RadioButton extends Widget {
         }
 
         Object.defineProperty(this, 'addValueChangeHandler', {
-            get: function() {
+            get: function () {
                 return addValueChangeHandler;
             }
         });
@@ -137,10 +134,10 @@ class RadioButton extends Widget {
         let buttonGroup = null;
 
         Object.defineProperty(this, 'buttonGroup', {
-            get: function() {
+            get: function () {
                 return buttonGroup;
             },
-            set: function(aValue) {
+            set: function (aValue) {
                 const oldGroup = buttonGroup;
                 buttonGroup = aValue;
                 if (oldGroup)

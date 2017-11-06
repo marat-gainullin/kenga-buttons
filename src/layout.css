@@ -2,6 +2,8 @@
 
 .p-boolean-widget > input {
     vertical-align: middle;
+    text-align: left;
+    white-space: nowrap;
 }
 
 .p-dropdown-chevron {
