@@ -409,9 +409,9 @@ describe('Buttons Api', () => {
         check.onValueChange = e => {
             Logger.info(`Check value: ${e.newValue}`);
         };
-        expect(check.element.style.direction).toEqual('rtl');
+        expect(check.element.firstElementChild.tagName.toLowerCase()).toEqual('input');
         check.horizontalTextPosition = Ui.HorizontalPosition.LEFT;
-        expect(check.element.style.direction).toEqual('ltr');
+        expect(check.element.lastElementChild.tagName.toLowerCase()).toEqual('input');
         document.body.removeChild(check.element);
     }
 
