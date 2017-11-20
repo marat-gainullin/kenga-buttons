@@ -1,6 +1,6 @@
 {
   "name": "kenga-buttons",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Kenga buttons. Simple and specific i.e. dropdown button",
   "main": "index.js",
   "repository": "https://github.com/marat-gainullin/kenga-buttons.git",
