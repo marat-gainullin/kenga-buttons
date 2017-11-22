@@ -1,5 +1,10 @@
 @import 'node_modules/kenga-labels/layout.css';
 
+.p-boolean-widget {
+    white-space: nowrap;
+    line-height: normal;
+}
+
 .p-boolean-widget > input {
     vertical-align: middle;
     text-align: left;
