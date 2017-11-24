@@ -1,4 +1,4 @@
-# kenga-buttons
+# Kenga buttons
 Kenga buttons. Simple and specific i.e. drop down button.
 This package contains radio button and chackbox widgets.
 
