@@ -42,8 +42,8 @@
     "yargs": "^9.0.1"
   },
   "dependencies": {
-    "kenga": "0.0.40",
-    "kenga-labels": "0.0.26",
+    "kenga": "0.0.42",
+    "kenga-labels": "0.0.28",
     "septima-utils": "0.0.7"
   }
 }
