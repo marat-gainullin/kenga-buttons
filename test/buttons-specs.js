@@ -15,7 +15,7 @@ import DropDownButton from '../src/drop-down-button';
 
 describe('Buttons Api', () => {
     it('Button.Structure', done => {
-        Resource.Icon.load('base/assets/binary-content.png')
+        Resource.Icon.load('../assets/binary-content.png')
                 .then(icon => {
                     const btn1 = new Button();
                     expect(btn1.text).toBeFalsy();
@@ -53,7 +53,7 @@ describe('Buttons Api', () => {
         document.body.appendChild(btn.element);
         btn.text = 'Sample button';
         expect(btn.iconTextGap).toEqual(4);
-        Resource.Icon.load('base/assets/binary-content.png')
+        Resource.Icon.load('../assets/binary-content.png')
                 .then(loaded => {
                     btn.icon = loaded;
                     // defaults
@@ -114,7 +114,7 @@ describe('Buttons Api', () => {
         const btn = new Button();
         document.body.appendChild(btn.element);
         expect(btn.iconTextGap).toEqual(4);
-        Resource.Icon.load('base/assets/binary-content.png')
+        Resource.Icon.load('../assets/binary-content.png')
                 .then(loaded => {
                     btn.icon = loaded;
                     // defaults
@@ -172,7 +172,7 @@ describe('Buttons Api', () => {
                 .catch(done.fail);
     });
     it('ToggleButton.Structure', done => {
-        Resource.Icon.load('base/assets/binary-content.png')
+        Resource.Icon.load('../assets/binary-content.png')
                 .then(icon => {
                     const btn1 = new ToggleButton();
                     expect(btn1.text).toBeFalsy();
@@ -242,7 +242,7 @@ describe('Buttons Api', () => {
         document.body.appendChild(toggle.element);
         toggle.text = 'Sample toggle button';
         expect(toggle.iconTextGap).toEqual(4);
-        Resource.Icon.load('base/assets/binary-content.png')
+        Resource.Icon.load('../assets/binary-content.png')
                 .then(loaded => {
                     toggle.icon = loaded;
                     // defaults
@@ -311,7 +311,7 @@ describe('Buttons Api', () => {
         document.body.appendChild(btn.element);
         btn.text = 'Sample drop down button';
         expect(btn.iconTextGap).toEqual(4);
-        Resource.Icon.load('base/assets/binary-content.png')
+        Resource.Icon.load('../assets/binary-content.png')
                 .then(loaded => {
                     btn.icon = loaded;
                     // defaults
