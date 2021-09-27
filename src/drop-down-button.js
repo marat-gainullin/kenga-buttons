@@ -20,10 +20,10 @@ class DropDownButton extends Button {
         let mouseDownReg;
         let mouseClickReg;
         Object.defineProperty(this, 'dropDownMenu', {
-            get: function() {
+            get: function () {
                 return dropDownMenu;
             },
-            set: function(aValue) {
+            set: function (aValue) {
                 if (dropDownMenu !== aValue) {
                     if (mouseDownReg) {
                         mouseDownReg.removeHandler();
@@ -45,6 +45,17 @@ class DropDownButton extends Button {
                         }, false);
                     }
                 }
+            }
+        });
+
+        function showDropDownMenu() {
+            Ui.startMenuSession(dropDownMenu);
+            dropDownMenu.showRelativeTo(dropDown, false);
+        }
+
+        Object.defineProperty(this, 'showDropDownMenu', {
+            get: function () {
+                return showDropDownMenu;
             }
         });
     }

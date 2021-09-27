@@ -1,7 +1,6 @@
 import Ui from 'kenga/utils';
 import Widget from 'kenga/widget';
 import ValueChangeEvent from 'kenga/events/value-change-event';
-import Invoke from 'septima-utils/invoke';
 
 class RadioButton extends Widget {
     constructor(text, selected, onAction) {
@@ -117,7 +116,7 @@ class RadioButton extends Widget {
         function fireValueChanged(oldValue) {
             const event = new ValueChangeEvent(self, oldValue, selected);
             valueChangeHandlers.forEach(h => {
-                Invoke.later(() => {
+                Ui.later(() => {
                     h(event);
                 });
             });

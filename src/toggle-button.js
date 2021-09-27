@@ -1,4 +1,4 @@
-import Invoke from 'septima-utils/invoke';
+import Ui from 'kenga/utils';
 import ValueChangeEvent from 'kenga/events/value-change-event';
 import Button from './button';
 
@@ -67,7 +67,7 @@ class ToggleButton extends Button {
         function fireValueChanged(oldValue) {
             const event = new ValueChangeEvent(self, oldValue, selected);
             valueChangeHandlers.forEach(h => {
-                Invoke.later(() => {
+                Ui.later(() => {
                     h(event);
                 });
             });
