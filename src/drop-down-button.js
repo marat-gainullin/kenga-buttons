@@ -37,8 +37,7 @@ class DropDownButton extends Button {
                     if (dropDownMenu) {
                         mouseDownReg = Ui.on(dropDown, Ui.Events.MOUSEDOWN, evt => {
                             evt.stopPropagation();
-                            Ui.startMenuSession(dropDownMenu);
-                            dropDownMenu.showRelativeTo(dropDown, false);
+                            dropDownMenu.popupRelativeTo(self.element, false);
                         }, false);
                         mouseClickReg = Ui.on(dropDown, Ui.Events.CLICK, evt => {
                             evt.stopPropagation();
