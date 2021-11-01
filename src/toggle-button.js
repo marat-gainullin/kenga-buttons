@@ -5,7 +5,7 @@ import Button from './button';
 class ToggleButton extends Button {
     constructor(text, icon, selected, iconTextGap, onAction) {
         if (arguments.length < 4)
-            iconTextGap = 4;
+            iconTextGap = '4px';
         if (arguments.length < 3)
             selected = false;
         if (arguments.length < 2)

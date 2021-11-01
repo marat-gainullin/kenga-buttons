@@ -4,7 +4,7 @@ import Button from './button';
 class DropDownButton extends Button {
     constructor(text, icon, iconTextGap, onAction) {
         if (arguments.length < 3)
-            iconTextGap = 4;
+            iconTextGap = '4px';
         if (arguments.length < 2)
             icon = null;
         if (arguments.length < 1)
