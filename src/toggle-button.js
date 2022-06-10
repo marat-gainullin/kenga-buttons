@@ -73,6 +73,12 @@ class ToggleButton extends Button {
             });
         }
 
+        Object.defineProperty(this, 'fireValueChanged', {
+          get: function () {
+            return fireValueChanged;
+          }
+        });
+
         this.addActionHandler(() => {
             self.selected = !self.selected;
         });

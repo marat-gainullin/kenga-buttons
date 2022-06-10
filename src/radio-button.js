@@ -122,6 +122,12 @@ class RadioButton extends Widget {
             });
         }
 
+        Object.defineProperty(this, 'fireValueChanged', {
+          get: function () {
+            return fireValueChanged;
+          }
+        });
+
         this.addActionHandler(() => {
             if (box.indeterminate) {
                 self.value = null;
@@ -149,4 +155,3 @@ class RadioButton extends Widget {
 }
 
 export default RadioButton;
-       
