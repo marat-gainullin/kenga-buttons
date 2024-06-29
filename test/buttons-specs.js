@@ -20,17 +20,17 @@ describe('Buttons Api', () => {
                     const btn1 = new Button();
                     expect(btn1.text).toBeFalsy();
                     expect(btn1.icon).toBeNull();
-                    expect(btn1.iconTextGap).toEqual(4);
+                    expect(btn1.iconTextGap).toEqual('4px');
                     expect(btn1.actionPerformed).toBeFalsy();
                     const btn2 = new Button('sample');
                     expect(btn2.text).toEqual('sample');
                     expect(btn2.icon).toBeNull();
-                    expect(btn2.iconTextGap).toEqual(4);
+                    expect(btn2.iconTextGap).toEqual('4px');
                     expect(btn2.actionPerformed).toBeFalsy();
                     const btn3 = new Button('sample', icon);
                     expect(btn3.text).toEqual('sample');
                     expect(btn3.icon).toEqual(icon);
-                    expect(btn3.iconTextGap).toEqual(4);
+                    expect(btn3.iconTextGap).toEqual('4px');
                     expect(btn3.actionPerformed).toBeFalsy();
                     const btn4 = new Button('sample', icon, 6);
                     expect(btn4.text).toEqual('sample');
@@ -52,7 +52,7 @@ describe('Buttons Api', () => {
         const btn = new Button();
         document.body.appendChild(btn.element);
         btn.text = 'Sample button';
-        expect(btn.iconTextGap).toEqual(4);
+        expect(btn.iconTextGap).toEqual('4px');
         Resource.Icon.load('../assets/binary-content.png')
                 .then(loaded => {
                     btn.icon = loaded;
@@ -113,7 +113,7 @@ describe('Buttons Api', () => {
     it('Button.Markup.2', done => {
         const btn = new Button();
         document.body.appendChild(btn.element);
-        expect(btn.iconTextGap).toEqual(4);
+        expect(btn.iconTextGap).toEqual('4px');
         Resource.Icon.load('../assets/binary-content.png')
                 .then(loaded => {
                     btn.icon = loaded;
@@ -125,7 +125,7 @@ describe('Buttons Api', () => {
                         const image = btn.element.firstElementChild;
                         const paragraph = btn.element.lastElementChild;
                         expect(image.offsetLeft).toEqual(6);
-                        expect(paragraph.offsetLeft).toEqual(6 + 16 /*+ 4 gap is ignored without text or image*/);
+                        expect(paragraph.offsetLeft).toEqual(6 + 16 + 4);
                     })());
                     // top and bottom
                     btn.verticalTextPosition = Ui.VerticalPosition.BOTTOM;
@@ -136,7 +136,7 @@ describe('Buttons Api', () => {
                         const image = btn.element.lastElementChild;
                         const paragraph = btn.element.firstElementChild;
                         expect(paragraph.offsetLeft).toEqual(6);
-                        expect(image.offsetLeft).toEqual(6 + paragraph.offsetWidth /*+ 4 gap is ignored without text or image*/);
+                        expect(image.offsetLeft).toEqual(6 + paragraph.offsetWidth + 4);
                     })());
                     // top and bottom
                     btn.verticalTextPosition = Ui.VerticalPosition.BOTTOM;
@@ -151,13 +151,13 @@ describe('Buttons Api', () => {
                         const image = btn.element.firstElementChild;
                         const paragraph = btn.element.lastElementChild;
                         expect(image.offsetTop).toEqual(1 + 0);
-                        expect(paragraph.offsetTop).toEqual(1 + 16 /*+ 4 gap is ignored without text or image*/);
+                        expect(paragraph.offsetTop).toEqual(1 + 16 + 4);
                     })());
                     btn.verticalTextPosition = Ui.VerticalPosition.TOP;
                     ((() => {
                         const image = btn.element.lastElementChild;
                         const paragraph = btn.element.firstElementChild;
-                        expect(image.offsetTop).toEqual(paragraph.offsetTop);
+                        expect(image.offsetTop).toEqual(paragraph.offsetTop + 4);
                     })());
                     // center center
                     btn.verticalTextPosition = Ui.VerticalPosition.CENTER;
@@ -178,25 +178,25 @@ describe('Buttons Api', () => {
                     expect(btn1.text).toBeFalsy();
                     expect(btn1.icon).toBeNull();
                     expect(btn1.selected).toBeFalsy();
-                    expect(btn1.iconTextGap).toEqual(4);
+                    expect(btn1.iconTextGap).toEqual('4px');
                     expect(btn1.actionPerformed).toBeFalsy();
                     const btn2 = new ToggleButton('sample');
                     expect(btn2.text).toEqual('sample');
                     expect(btn2.icon).toBeNull();
                     expect(btn2.selected).toBeFalsy();
-                    expect(btn2.iconTextGap).toEqual(4);
+                    expect(btn2.iconTextGap).toEqual('4px');
                     expect(btn2.actionPerformed).toBeFalsy();
                     const btn3 = new ToggleButton('sample', icon);
                     expect(btn3.text).toEqual('sample');
                     expect(btn3.icon).toEqual(icon);
                     expect(btn3.selected).toBeFalsy();
-                    expect(btn3.iconTextGap).toEqual(4);
+                    expect(btn3.iconTextGap).toEqual('4px');
                     expect(btn3.actionPerformed).toBeFalsy();
                     const btn4 = new ToggleButton('sample', icon, true);
                     expect(btn4.text).toEqual('sample');
                     expect(btn4.icon).toEqual(icon);
                     expect(btn4.selected).toBeTruthy();
-                    expect(btn4.iconTextGap).toEqual(4);
+                    expect(btn4.iconTextGap).toEqual('4px');
                     expect(btn4.actionPerformed).toBeFalsy();
                     const btn5 = new ToggleButton('sample', icon, true, 6);
                     expect(btn5.text).toEqual('sample');
@@ -241,7 +241,7 @@ describe('Buttons Api', () => {
         const toggle = new ToggleButton();
         document.body.appendChild(toggle.element);
         toggle.text = 'Sample toggle button';
-        expect(toggle.iconTextGap).toEqual(4);
+        expect(toggle.iconTextGap).toEqual('4px');
         Resource.Icon.load('../assets/binary-content.png')
                 .then(loaded => {
                     toggle.icon = loaded;
@@ -310,7 +310,7 @@ describe('Buttons Api', () => {
         const btn = new DropDownButton();
         document.body.appendChild(btn.element);
         btn.text = 'Sample drop down button';
-        expect(btn.iconTextGap).toEqual(4);
+        expect(btn.iconTextGap).toEqual('4px');
         Resource.Icon.load('../assets/binary-content.png')
                 .then(loaded => {
                     btn.icon = loaded;

@@ -8,10 +8,10 @@ class RadioButton extends Widget {
             selected = false;
         if (arguments.length < 1)
             text = '';
-        super(document.createElement('label'));
+        const box = document.createElement('input');
+        super(box, document.createElement('label'));
         const label = this.element;
         label.classList.add('p-boolean-widget');
-        const box = document.createElement('input');
         box.type = 'radio';
         this.opaque = false;
         this.onAction = onAction;

@@ -8,8 +8,7 @@ class CheckBox extends RadioButton {
             text = '';
         super(text, selected, onAction);
 
-        const box = this.element.firstElementChild;
-        box.type = 'checkbox';
+        this.box.type = 'checkbox';
     }
 }
 

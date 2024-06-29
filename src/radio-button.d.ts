@@ -13,5 +13,5 @@ export default class RadioButton extends Widget implements HasValue {
   value: boolean
   buttonGroup: Widget
   addValueChangeHandler: (handler: (evt: ValueChangeEvent) => void) => { removeHandler: () => void }
-  fireValueChanged(): void
+  fireValueChanged(oldValue: any): void
 }

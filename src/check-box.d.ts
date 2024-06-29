@@ -1,4 +1,4 @@
-import RadioButton from 'kenga-buttons/radio-button';
+import RadioButton from './radio-button';
 
 export default class CheckBox extends RadioButton {
 }
