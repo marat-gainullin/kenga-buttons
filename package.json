@@ -1,6 +1,6 @@
 {
   "name": "kenga-buttons",
-  "version": "0.0.44",
+  "version": "0.0.45",
   "description": "Kenga buttons. Simple and specific i.e. dropdown button",
   "repository": "https://github.com/marat-gainullin/kenga-buttons.git",
   "author": "marat-gainullin <mg@altsoft.biz>",
@@ -13,8 +13,8 @@
     "upload": "rimraf ./build && rollup -c rollup.lib.config.mjs && npm publish ./build/lib"
   },
   "dependencies": {
-    "kenga": "0.0.56",
-    "kenga-labels": "0.0.49"
+    "kenga": "0.0.57",
+    "kenga-labels": "0.0.50"
   },
   "devDependencies": {
     "@babel/runtime": "^7.15.3",
