@@ -48,7 +48,7 @@ class DropDownButton extends Button {
         });
 
         function showDropDownMenu() {
-            Ui.startMenuSession(dropDownMenu);
+            Ui.startPopupSession(dropDownMenu);
             dropDownMenu.showRelativeTo(dropDown, false);
         }
 
